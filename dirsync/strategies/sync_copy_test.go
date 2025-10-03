@@ -73,6 +73,7 @@ func Test_syncFile(t *testing.T) {
 		mockFileUtils.ExpectedCalls = nil
 		mockFileUtils.On("Exists", destination).Return(true, nil)
 		mockFileUtils.On("IsTheSame", source, destination).Return(false, errors.New("error comparing files"))
+		mockFileUtils.On("CopyFile", source, destination).Return(errors.New("error copying file"))
 
 		sc.syncFile(source, destination)
 

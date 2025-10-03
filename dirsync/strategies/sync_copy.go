@@ -69,6 +69,7 @@ func (sc *syncCopy) syncFile(source, destination string) {
 		same, err := sc.fileUtils.IsTheSame(source, destination)
 		if err != nil {
 			fmt.Printf(fileErrorMsg, source, err)
+			return
 		}
 		if same {
 			fmt.Printf("file: %s, already exists and is the same, skipping\n", source)
